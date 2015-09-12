@@ -1,8 +1,13 @@
-﻿using System.Collections.Generic;
+﻿#region Using
+
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using BuyApartments.Model;
 using BuyApartments.Model.JSON;
-using GTA.Math;
 using Newtonsoft.Json;
+
+#endregion
 
 namespace BuyApartments.Controller
 {
@@ -14,11 +19,43 @@ namespace BuyApartments.Controller
         {
             this._interiors = new List<Interior>();
 
-            InteriorsListJSON parsedInteriors = JsonConvert.DeserializeObject<InteriorsListJSON>( Properties.Resource.Interiors );
-            foreach ( InteriorJSON interiorJSON in parsedInteriors.Interiors )
+            // parse default interiors
+            this.FillList( Properties.Resource.Interiors );
+            this.ParseCustomInteriors();
+        }
+
+        private void FillList( string json )
+        {
+            InteriorsListJSON parsedInteriors;
+            try
             {
-                var interior = new Interior( interiorJSON.Coordinates, interiorJSON.Name );
+                parsedInteriors = JsonConvert.DeserializeObject<InteriorsListJSON>( json );
             }
+            catch
+            {
+                return;
+            }
+            foreach (
+                var interior in
+                    parsedInteriors.Interiors.Select(
+                        interiorJSON => new Interior( interiorJSON.Coordinates, interiorJSON.Name ) ) )
+            {
+                if ( this._interiors.Contains( interior ) )
+                {
+                    this._interiors.Remove( interior );
+                }
+                this._interiors.Add( interior );
+            }
+        }
+
+        private void ParseCustomInteriors()
+        {
+            const string filename = @"scripts\BuyApartments\CustomInterior.json";
+            if ( !File.Exists( filename ) )
+            {
+                return;
+            }
+            this.FillList( File.ReadAllText( filename ) );
         }
     }
 }
