@@ -15,6 +15,8 @@ namespace BuyApartments.Controller
     {
         private readonly List<Interior> _interiors;
 
+        public List<Interior> Interiors => this._interiors;
+
         public InteriorController()
         {
             this._interiors = new List<Interior>();
@@ -48,9 +50,8 @@ namespace BuyApartments.Controller
             }
         }
 
-        private void ParseCustomInteriors()
+        private void ParseCustomInteriors( string filename = @"scripts\BuyApartments\CustomInterior.json" )
         {
-            const string filename = @"scripts\BuyApartments\CustomInterior.json";
             if ( !File.Exists( filename ) )
             {
                 return;
