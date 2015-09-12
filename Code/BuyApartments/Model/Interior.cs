@@ -25,7 +25,7 @@ namespace BuyApartments.Model
             {
                 return true;
             }
-            return this.StartPoint.Equals( other.StartPoint ) && string.Equals( this.Name, other.Name );
+            return string.Equals( this.Name, other.Name );
         }
 
         public override bool Equals( object obj )
@@ -47,10 +47,7 @@ namespace BuyApartments.Model
 
         public override int GetHashCode()
         {
-            unchecked
-            {
-                return ( this.StartPoint.GetHashCode() * 397 ) ^ ( this.Name != null ? this.Name.GetHashCode() : 0 );
-            }
+            return ( this.Name != null ? this.Name.GetHashCode() : 0 );
         }
 
         public static bool operator ==( Interior left, Interior right )
