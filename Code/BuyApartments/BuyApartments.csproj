@@ -82,6 +82,7 @@
     <Compile Include="BuyApartments.cs" />
     <Compile Include="Controller\HouseController.cs" />
     <Compile Include="Controller\InteriorController.cs" />
+    <Compile Include="Controller\PurchasedHousesController.cs" />
     <Compile Include="Model\House.cs" />
     <Compile Include="Model\Interior.cs" />
     <Compile Include="Model\JSON\CoordinatesJSON.cs" />
