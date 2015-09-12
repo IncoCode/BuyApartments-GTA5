@@ -80,9 +80,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuyApartments.cs" />
-    <Compile Include="Model\Houses.cs" />
-    <Compile Include="Model\Coordinates.cs" />
-    <Compile Include="Model\Interiors.cs" />
+    <Compile Include="InteriorController.cs" />
+    <Compile Include="Model\JSON\CoordinatesJSON.cs" />
+    <Compile Include="Model\JSON\HousesJSON.cs" />
+    <Compile Include="Model\JSON\InteriorsJSON.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resource.Designer.cs">
       <AutoGen>True</AutoGen>

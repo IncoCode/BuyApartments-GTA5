@@ -1,6 +1,6 @@
-﻿namespace BuyApartments.Model
+﻿namespace BuyApartments.Model.JSON
 {
-    internal class Coordinates
+    internal class CoordinatesJSON
     {
         public double X { get; set; }
         public double Y { get; set; }
