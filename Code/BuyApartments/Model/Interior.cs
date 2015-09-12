@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using BuyApartments.Model.JSON;
 using GTA.Math;
 
 #endregion
@@ -68,6 +69,11 @@ namespace BuyApartments.Model
         {
             this.StartPoint = startPoint;
             this.Name = name;
+        }
+
+        public Interior( CoordinatesJSON startPoint, string name ) :
+            this( new Vector3( startPoint.X, startPoint.Y, startPoint.Z ), name )
+        {
         }
     }
 }
