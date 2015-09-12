@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using BuyApartments.Model.JSON;
 using GTA.Math;
 
 #endregion
@@ -26,8 +27,7 @@ namespace BuyApartments.Model
             {
                 return true;
             }
-            return string.Equals( this.Name, other.Name ) && Equals( this.Interior, other.Interior ) &&
-                   this.Price == other.Price && this.Location.Equals( other.Location );
+            return string.Equals( this.Name, other.Name );
         }
 
         public override bool Equals( object obj )
@@ -49,14 +49,7 @@ namespace BuyApartments.Model
 
         public override int GetHashCode()
         {
-            unchecked
-            {
-                int hashCode = ( this.Name != null ? this.Name.GetHashCode() : 0 );
-                hashCode = ( hashCode * 397 ) ^ ( this.Interior != null ? this.Interior.GetHashCode() : 0 );
-                hashCode = ( hashCode * 397 ) ^ this.Price;
-                hashCode = ( hashCode * 397 ) ^ this.Location.GetHashCode();
-                return hashCode;
-            }
+            return ( this.Name != null ? this.Name.GetHashCode() : 0 );
         }
 
         public static bool operator ==( House left, House right )
@@ -77,6 +70,11 @@ namespace BuyApartments.Model
             this.Interior = interior;
             this.Price = price;
             this.Location = location;
+        }
+
+        public House( string name, Interior interior, int price, CoordinatesJSON location )
+            : this( name, interior, price, new Vector3( location.X, location.Y, location.Z ) )
+        {
         }
     }
 }
