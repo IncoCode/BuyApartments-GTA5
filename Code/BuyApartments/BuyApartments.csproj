@@ -51,8 +51,8 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="iFruitContacts">
-      <HintPath>..\packages\iFruitContacts.dll</HintPath>
+    <Reference Include="iFruitAddon">
+      <HintPath>..\packages\iFruitAddon.dll</HintPath>
     </Reference>
     <Reference Include="IniFile">
       <HintPath>..\packages\IniFile.dll</HintPath>
@@ -80,6 +80,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuyApartments.cs" />
+    <Compile Include="Model\Houses.cs" />
+    <Compile Include="Model\Coordinates.cs" />
+    <Compile Include="Model\Interiors.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
