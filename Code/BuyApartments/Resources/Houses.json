@@ -1,0 +1,174 @@
+{
+  "Houses": [
+    {
+      "Name": "HighEnd_1",
+      "Interior": "Del_Perro-Apt_20",
+      "Price": 750000,
+      "Location": {
+        "x": -772.795,
+        "y": 313.055,
+        "z": 85.698
+      }
+    },
+    {
+      "Name": "HighEnd_2",
+      "Interior": "Eclipse_Towers-Apt_31",
+      "Price": 670000,
+      "Location": {
+        "x": -1442.957,
+        "y": -544.699,
+        "z": 34.742
+      }
+    },
+    {
+      "Name": "HighEnd_3",
+      "Interior": "Eclipse_Towers-Apt_40",
+      "Price": 670000,
+      "Location": {
+        "x": -1442.957,
+        "y": -544.699,
+        "z": 34.742
+      }
+    },
+    {
+      "Name": "HighEnd_4",
+      "Interior": "Eclipse_Towers-Apt_5",
+      "Price": 670000,
+      "Location": {
+        "x": -1442.957,
+        "y": -544.699,
+        "z": 34.742
+      }
+    },
+    {
+      "Name": "MidEnd_1",
+      "Interior": "Richards_Majestic-Apt_4",
+      "Price": 450000,
+      "Location": {
+        "x": -932.739,
+        "y": -383.948,
+        "z": 38.961
+      }
+    },
+    {
+      "Name": "MidEnd_2",
+      "Interior": "Richards_Majestic-Apt_51",
+      "Price": 450000,
+      "Location": {
+        "x": -932.739,
+        "y": -383.948,
+        "z": 38.961
+      }
+    },
+    {
+      "Name": "MidEnd_3",
+      "Interior": "Weazel_Plaza-Apt_101",
+      "Price": 420000,
+      "Location": {
+        "x": -884.239,
+        "y": -434.309,
+        "z": 39.600
+      }
+    },
+    {
+      "Name": "MidEnd_4",
+      "Interior": "Weazel_Plaza-Apt_26",
+      "Price": 420000,
+      "Location": {
+        "x": -884.239,
+        "y": -434.309,
+        "z": 39.600
+      }
+    },
+    {
+      "Name": "MidEnd_5",
+      "Interior": "Weazel_Plaza-Apt_70",
+      "Price": 420000,
+      "Location": {
+        "x": -884.239,
+        "y": -434.309,
+        "z": 39.600
+      }
+    },
+    {
+      "Name": "MidEnd_6",
+      "Interior": "Some_MidEnd_Apt_1",
+      "Price": 350000,
+      "Location": {
+        "x": -261.769,
+        "y": -970.486,
+        "z": 31.220
+      }
+    },
+    {
+      "Name": "LowEnd_1",
+      "Interior": "Some_LowEnd_Apt_1",
+      "Price": 25000,
+      "Location": {
+        "x": 1661.386,
+        "y": 3819.948,
+        "z": 35.470
+      }
+    },
+    {
+      "Name": "LowEnd_2",
+      "Interior": "Some_LowEnd_Apt_1",
+      "Price": 35000,
+      "Location": {
+        "x": 1861.881,
+        "y": 3857.273,
+        "z": 36.272
+      }
+    },
+    {
+      "Name": "LowEnd_3",
+      "Interior": "Some_LowEnd_Apt_1",
+      "Price": 45000,
+      "Location": {
+        "x": 1725.474,
+        "y": 4642.377,
+        "z": 43.875
+      }
+    },
+    {
+      "Name": "LowEnd_4",
+      "Interior": "Some_LowEnd_Apt_1",
+      "Price": 35000,
+      "Location": {
+        "x": 1663.951,
+        "y": 4739.684,
+        "z": 42.011
+      }
+    },
+    {
+      "Name": "LowEnd_5",
+      "Interior": "Some_LowEnd_Apt_1",
+      "Price": 55000,
+      "Location": {
+        "x": 11.601,
+        "y": 6578.486,
+        "z": 33.071
+      }
+    },
+    {
+      "Name": "LowEnd_6",
+      "Interior": "Some_LowEnd_Apt_1",
+      "Price": 50000,
+      "Location": {
+        "x": -105.588,
+        "y": 6528.392,
+        "z": 30.167
+      }
+    },
+    {
+      "Name": "LowEnd_7",
+      "Interior": "Some_LowEnd_Apt_1",
+      "Price": 60000,
+      "Location": {
+        "x": -360.163,
+        "y": 6260.542,
+        "z": 31.901
+      }
+    }
+  ]
+}

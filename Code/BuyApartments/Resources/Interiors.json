@@ -1,0 +1,92 @@
+{
+  "Interiors": [
+    {
+      "Coordinates": {
+        "x": -1466.041,
+        "y": -532.230,
+        "z": 56.000
+      },
+      "Name": "Del_Perro-Apt_20"
+    },
+    {
+      "Coordinates": {
+        "x": -790.000,
+        "y": 336.000,
+        "z": 207.000
+      },
+      "Name": "Eclipse_Towers-Apt_31"
+    },
+    {
+      "Coordinates": {
+        "x": -764.000,
+        "y": 321.000,
+        "z": 220.000
+      },
+      "Name": "Eclipse_Towers-Apt_40"
+    },
+    {
+      "Coordinates": {
+        "x": -790.000,
+        "y": 336.000,
+        "z": 159.000
+      },
+      "Name": "Eclipse_Towers-Apt_5"
+    },
+    {
+      "Coordinates": {
+        "x": -906.000,
+        "y": -375.000,
+        "z": 85.000
+      },
+      "Name": "Richards_Majestic-Apt_4"
+    },
+    {
+      "Coordinates": {
+        "x": -922.000,
+        "y": -375.000,
+        "z": 109.000
+      },
+      "Name": "Richards_Majestic-Apt_51"
+    },
+    {
+      "Coordinates": {
+        "x": -891.000,
+        "y": -450.000,
+        "z": 125.000
+      },
+      "Name": "Weazel_Plaza-Apt_101"
+    },
+    {
+      "Coordinates": {
+        "x": -895.000,
+        "y": -436.000,
+        "z": 95.000
+      },
+      "Name": "Weazel_Plaza-Apt_26"
+    },
+    {
+      "Coordinates": {
+        "x": -907.000,
+        "y": -440.000,
+        "z": 121.000
+      },
+      "Name": "Weazel_Plaza-Apt_70"
+    },
+    {
+      "Coordinates": {
+        "x": 346.886,
+        "y": -1004.292,
+        "z": -99.196
+      },
+      "Name": "Some_MidEnd_Apt_1"
+    },
+    {
+      "Coordinates": {
+        "x": 262.660,
+        "y": -998.459,
+        "z": -99.009
+      },
+      "Name": "Some_LowEnd_Apt_1"
+    }
+  ]
+}
