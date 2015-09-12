@@ -81,6 +81,7 @@
   <ItemGroup>
     <Compile Include="BuyApartments.cs" />
     <Compile Include="InteriorController.cs" />
+    <Compile Include="Model\House.cs" />
     <Compile Include="Model\Interior.cs" />
     <Compile Include="Model\JSON\CoordinatesJSON.cs" />
     <Compile Include="Model\JSON\HousesJSON.cs" />
