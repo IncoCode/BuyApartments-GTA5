@@ -40,7 +40,8 @@ namespace BuyApartments.Controller
             foreach (
                 var interior in
                     parsedInteriors.Interiors.Select(
-                        interiorJSON => new Interior( interiorJSON.Coordinates, interiorJSON.Name ) ) )
+                        interiorJSON =>
+                            new Interior( interiorJSON.Coordinates, interiorJSON.Name, interiorJSON.Heading ) ) )
             {
                 if ( this._interiors.Contains( interior ) )
                 {

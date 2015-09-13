@@ -10,6 +10,7 @@ namespace BuyApartments.Model.JSON
     {
         public CoordinatesJSON Coordinates { get; set; }
         public string Name { get; set; }
+        public float Heading { get; set; }
     }
 
     internal class InteriorsListJSON

@@ -12,6 +12,7 @@ namespace BuyApartments.Model
     {
         public Vector3 StartPoint { get; set; }
         public string Name { get; set; }
+        public float Heading { get; set; }
 
         #region Members
 
@@ -62,14 +63,15 @@ namespace BuyApartments.Model
 
         #endregion
 
-        public Interior( Vector3 startPoint, string name )
+        public Interior( Vector3 startPoint, string name, float heading )
         {
             this.StartPoint = startPoint;
             this.Name = name;
+            this.Heading = heading;
         }
 
-        public Interior( CoordinatesJSON startPoint, string name ) :
-            this( new Vector3( startPoint.X, startPoint.Y, startPoint.Z ), name )
+        public Interior( CoordinatesJSON startPoint, string name, float heading ) :
+            this( new Vector3( startPoint.X, startPoint.Y, startPoint.Z ), name, heading )
         {
         }
     }
