@@ -8,6 +8,7 @@ using BuyApartments.Controller;
 using BuyApartments.Model;
 using GTA;
 using GTA.Math;
+using GTA.Native;
 using iFruitAddon;
 using Ini;
 using NativeUI;
@@ -73,13 +74,13 @@ namespace BuyApartments
             {
                 player.CanControlCharacter = false;
                 this._currentInterior = null;
-                Game.FadeScreenIn( 500 );
-                Wait( 500 );
+                //Game.FadeScreenIn( 500 );
+                //Wait( 500 );
                 this._aroundSomeHouse = true;
                 player.Character.Position = this._enterPoint;
                 float heading = this._enterHeading;
                 player.Character.Heading = heading + 90 > 360 ? heading + 90 - 360 : heading + 90;
-                Game.FadeScreenOut( 500 );
+                //Game.FadeScreenOut( 500 );
                 player.CanControlCharacter = true;
                 this.ResetAroundSomeHouse( 10000 );
             }
@@ -147,13 +148,27 @@ namespace BuyApartments
                     this._enterPoint = player.Character.Position;
                     this._canExitFromHouse = false;
                     this._currentInterior = boughtHouse.Interior;
-                    Game.FadeScreenIn( 500 );
-                    Wait( 500 );
-                    player.Character.Position = boughtHouse.Interior.StartPoint;
+                    //Game.FadeScreenIn( 500 );
+                    //if ( Function.Call<bool>( Hash.IS_SCREEN_FADED_IN ) )
+                    //{
+                    //    Wait( 1 );
+                    //}
+                    //Wait( 500 );
+
+                    Vector3 point = boughtHouse.Interior.StartPoint;
+                    var interior = Function.Call<int>( Hash.GET_INTERIOR_AT_COORDS, point.X, point.Y, point.Z );
+                    Function.Call( Hash.DISABLE_INTERIOR, interior, false );
+                    Wait( 1000 );
+
+                    player.Character.Position = point;
                     player.Character.Heading = boughtHouse.Interior.Heading;
-                    Game.FadeScreenOut( 500 );
+                    //Game.FadeScreenOut( 500 );
+                    //if ( Function.Call<bool>( Hash.IS_SCREEN_FADED_OUT ) )
+                    //{
+                    //    Wait( 1 );
+                    //}
                     player.CanControlCharacter = true;
-                    this.ResetCanExitFromHouse( 10000 );
+                    this.ResetCanExitFromHouse( 20000 );
                 };
                 menu.AddItem( bButton );
             }
@@ -162,15 +177,16 @@ namespace BuyApartments
                 var bButton = new UIMenuItem( "Buy " + freeHouse.Name );
                 bButton.Activated += ( sender, item ) =>
                 {
+                    this._menuPool.CloseAllMenus();
                     Player player = Game.Player;
                     if ( player.Money < freeHouse.Price )
                     {
                         UI.Notify( "~r~Error:~r~ Not enough money!" );
                         return;
                     }
+                    player.Money -= freeHouse.Price;
                     this._purchasedHousesController.BuyHouse( freeHouse );
-                    this._menuPool.CloseAllMenus();
-                    this.CreateHouseMenu( freeHouse );
+                    this.ResetAroundSomeHouse( 2000 );
                 };
                 menu.AddItem( bButton );
             }
