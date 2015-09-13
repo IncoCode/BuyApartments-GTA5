@@ -12,6 +12,7 @@ namespace BuyApartments.Model.JSON
         public string Interior { get; set; }
         public int Price { get; set; }
         public CoordinatesJSON Location { get; set; }
+        public int DailyRent { get; set; }
     }
 
     internal class HousesListJSON

@@ -14,6 +14,7 @@ namespace BuyApartments.Model
         public Interior Interior { get; set; }
         public int Price { get; set; }
         public Vector3 Location { get; set; }
+        public int DailyRent { get; set; }
 
         #region Members
 
@@ -66,16 +67,17 @@ namespace BuyApartments.Model
 
         #region Constructors
 
-        public House( string name, Interior interior, int price, Vector3 location )
+        public House( string name, Interior interior, int price, Vector3 location, int dailyRent )
         {
             this.Name = name;
             this.Interior = interior;
             this.Price = price;
             this.Location = location;
+            this.DailyRent = dailyRent;
         }
 
-        public House( string name, Interior interior, int price, CoordinatesJSON location )
-            : this( name, interior, price, new Vector3( location.X, location.Y, location.Z ) )
+        public House( string name, Interior interior, int price, CoordinatesJSON location, int dailyRent )
+            : this( name, interior, price, new Vector3( location.X, location.Y, location.Z ), dailyRent )
         {
         }
 
