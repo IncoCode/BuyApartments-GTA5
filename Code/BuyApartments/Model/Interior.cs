@@ -63,6 +63,8 @@ namespace BuyApartments.Model
 
         #endregion
 
+        #region Constructors
+
         public Interior( Vector3 startPoint, string name, float heading )
         {
             this.StartPoint = startPoint;
@@ -73,6 +75,13 @@ namespace BuyApartments.Model
         public Interior( CoordinatesJSON startPoint, string name, float heading ) :
             this( new Vector3( startPoint.X, startPoint.Y, startPoint.Z ), name, heading )
         {
+        }
+
+        #endregion
+
+        public bool IsAroundStartPoint( Vector3 position, float range = 2 )
+        {
+            return range >= this.StartPoint.DistanceTo( position );
         }
     }
 }

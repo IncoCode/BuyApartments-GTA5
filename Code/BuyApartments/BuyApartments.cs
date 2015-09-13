@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using BuyApartments.Controller;
 using BuyApartments.Model;
 using GTA;
+using GTA.Math;
 using iFruitAddon;
 using Ini;
 using NativeUI;
@@ -25,6 +26,10 @@ namespace BuyApartments
         private UIMenu _menu;
         private Blip _blip;
         private bool _aroundSomeHouse = false;
+        private Vector3 _enterPoint;
+        private float _enterHeading;
+        private bool _canExitFromHouse = false;
+        private Interior _currentInterior;
 
         public BuyApartments()
         {
@@ -54,7 +59,7 @@ namespace BuyApartments
         {
             this._fruit.Update();
             this._menuPool.ProcessMenus();
-            var player = Game.Player;
+            Player player = Game.Player;
             House aroundHouse;
             if ( !this._aroundSomeHouse && this.AroundSomeHouse( out aroundHouse ) )
             {
@@ -64,6 +69,40 @@ namespace BuyApartments
                 this._blip = null;
                 this.CreateHouseMenu( aroundHouse );
             }
+            if ( this._currentInterior != null && this._currentInterior.IsAroundStartPoint( player.Character.Position ) && this._canExitFromHouse )
+            {
+                player.CanControlCharacter = false;
+                this._currentInterior = null;
+                Game.FadeScreenIn( 500 );
+                Wait( 500 );
+                this._aroundSomeHouse = true;
+                player.Character.Position = this._enterPoint;
+                float heading = this._enterHeading;
+                player.Character.Heading = heading + 90 > 360 ? heading + 90 - 360 : heading + 90;
+                Game.FadeScreenOut( 500 );
+                player.CanControlCharacter = true;
+                this.ResetAroundSomeHouse( 10000 );
+            }
+        }
+
+        private void ResetAroundSomeHouse( int delay = 5000 )
+        {
+            new Thread( () =>
+            {
+                Thread.Sleep( delay );
+                this._aroundSomeHouse = false;
+            } )
+            { Priority = ThreadPriority.Lowest }.Start();
+        }
+
+        private void ResetCanExitFromHouse( int delay = 5000 )
+        {
+            new Thread( () =>
+            {
+                Thread.Sleep( delay );
+                this._canExitFromHouse = true;
+            } )
+            { Priority = ThreadPriority.Lowest }.Start();
         }
 
         private bool AroundSomeHouse( out House house )
@@ -105,12 +144,16 @@ namespace BuyApartments
                 {
                     this._menuPool.CloseAllMenus();
                     Player player = Game.Player;
+                    this._enterPoint = player.Character.Position;
+                    this._canExitFromHouse = false;
+                    this._currentInterior = boughtHouse.Interior;
                     Game.FadeScreenIn( 500 );
                     Wait( 500 );
                     player.Character.Position = boughtHouse.Interior.StartPoint;
                     player.Character.Heading = boughtHouse.Interior.Heading;
                     Game.FadeScreenOut( 500 );
                     player.CanControlCharacter = true;
+                    this.ResetCanExitFromHouse( 10000 );
                 };
                 menu.AddItem( bButton );
             }
@@ -134,12 +177,7 @@ namespace BuyApartments
             menu.OnMenuClose += sender =>
             {
                 Game.Player.CanControlCharacter = true;
-                new Thread( () =>
-                {
-                    Thread.Sleep( 5000 );
-                    this._aroundSomeHouse = false;
-                } )
-                { Priority = ThreadPriority.Lowest }.Start();
+                this.ResetAroundSomeHouse();
             };
             menu.RefreshIndex();
             menu.Visible = true;
