@@ -64,6 +64,8 @@ namespace BuyApartments.Model
 
         #endregion
 
+        #region Constructors
+
         public House( string name, Interior interior, int price, Vector3 location )
         {
             this.Name = name;
@@ -75,6 +77,13 @@ namespace BuyApartments.Model
         public House( string name, Interior interior, int price, CoordinatesJSON location )
             : this( name, interior, price, new Vector3( location.X, location.Y, location.Z ) )
         {
+        }
+
+        #endregion
+
+        public bool IsInRange( Vector3 position, int range = 2 )
+        {
+            return range >= this.Location.DistanceTo( position );
         }
     }
 }
