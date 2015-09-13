@@ -101,7 +101,17 @@ namespace BuyApartments
             foreach ( House boughtHouse in boughtHouses )
             {
                 var bButton = new UIMenuItem( "Enter " + boughtHouse.Name );
-                bButton.Activated += ( sender, item ) => { };
+                bButton.Activated += ( sender, item ) =>
+                {
+                    this._menuPool.CloseAllMenus();
+                    Player player = Game.Player;
+                    Game.FadeScreenIn( 500 );
+                    Wait( 500 );
+                    player.Character.Position = boughtHouse.Interior.StartPoint;
+                    player.Character.Heading = boughtHouse.Interior.Heading;
+                    Game.FadeScreenOut( 500 );
+                    player.CanControlCharacter = true;
+                };
                 menu.AddItem( bButton );
             }
             foreach ( House freeHouse in freeHouses )
@@ -109,7 +119,15 @@ namespace BuyApartments
                 var bButton = new UIMenuItem( "Buy " + freeHouse.Name );
                 bButton.Activated += ( sender, item ) =>
                 {
-                    
+                    Player player = Game.Player;
+                    if ( player.Money < freeHouse.Price )
+                    {
+                        UI.Notify( "~r~Error:~r~ Not enough money!" );
+                        return;
+                    }
+                    this._purchasedHousesController.BuyHouse( freeHouse );
+                    this._menuPool.CloseAllMenus();
+                    this.CreateHouseMenu( freeHouse );
                 };
                 menu.AddItem( bButton );
             }
