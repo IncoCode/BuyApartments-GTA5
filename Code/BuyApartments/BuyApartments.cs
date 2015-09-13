@@ -1,6 +1,8 @@
 ﻿#region Using
 
 using System;
+using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using BuyApartments.Controller;
 using BuyApartments.Model;
@@ -22,6 +24,7 @@ namespace BuyApartments
         private readonly MenuPool _menuPool;
         private UIMenu _menu;
         private Blip _blip;
+        private bool _aroundSomeHouse = false;
 
         public BuyApartments()
         {
@@ -51,6 +54,22 @@ namespace BuyApartments
         {
             this._fruit.Update();
             this._menuPool.ProcessMenus();
+            var player = Game.Player;
+            House aroundHouse;
+            if ( !this._aroundSomeHouse && this.AroundSomeHouse( out aroundHouse ) )
+            {
+                this._aroundSomeHouse = true;
+                player.CanControlCharacter = false;
+                this._blip?.Remove();
+                this._blip = null;
+                this.CreateHouseMenu( aroundHouse );
+            }
+        }
+
+        private bool AroundSomeHouse( out House house )
+        {
+            house = this._houseController.Houses.FirstOrDefault( h => h.IsInRange( Game.Player.Character.Position ) );
+            return house != null;
         }
 
         private void CreateApartmentsMenu()
@@ -69,6 +88,40 @@ namespace BuyApartments
             }
             menu.Visible = true;
             menu.RefreshIndex();
+            this._menuPool.Add( menu );
+        }
+
+        private void CreateHouseMenu( House house )
+        {
+            var menu = new UIMenu( "House Menu", "" );
+            House[] boughtHouses =
+                this._purchasedHousesController.PurchasedHouses.Where( h => h.Location == house.Location ).ToArray();
+            House[] freeHouses =
+                this._purchasedHousesController.FreeHouses.Where( h => h.Location == house.Location ).ToArray();
+            foreach ( House boughtHouse in boughtHouses )
+            {
+                var bButton = new UIMenuItem( "Enter " + boughtHouse.Name );
+                bButton.Activated += ( sender, item ) => { };
+                menu.AddItem( bButton );
+            }
+            foreach ( House freeHouse in freeHouses )
+            {
+                var bButton = new UIMenuItem( "Buy " + freeHouse.Name );
+                bButton.Activated += ( sender, item ) => { };
+                menu.AddItem( bButton );
+            }
+            menu.OnMenuClose += sender =>
+            {
+                Game.Player.CanControlCharacter = true;
+                new Thread( () =>
+                {
+                    Thread.Sleep( 5000 );
+                    this._aroundSomeHouse = false;
+                } )
+                { Priority = ThreadPriority.Lowest }.Start();
+            };
+            menu.RefreshIndex();
+            menu.Visible = true;
             this._menuPool.Add( menu );
         }
 

@@ -13,10 +13,16 @@ namespace BuyApartments.Controller
         private readonly List<House> _purchasedHouses;
         private readonly HouseController _houseController;
 
+        #region Fields
+
         public House[] FreeHouses
         {
             get { return this._houseController.Houses.Where( h => !this._purchasedHouses.Contains( h ) ).ToArray(); }
         }
+
+        public List<House> PurchasedHouses => this._purchasedHouses;
+
+        #endregion
 
         public PurchasedHousesController( HouseController houseController )
         {
