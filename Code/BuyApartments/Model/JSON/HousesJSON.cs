@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿#region Using
+
+using System.Collections.Generic;
+
+#endregion
 
 namespace BuyApartments.Model.JSON
 {

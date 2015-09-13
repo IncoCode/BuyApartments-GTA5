@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region Using
+
+using System;
 using System.Windows.Forms;
 using BuyApartments.Controller;
 using BuyApartments.Model;
@@ -10,6 +8,8 @@ using GTA;
 using iFruitAddon;
 using Ini;
 using NativeUI;
+
+#endregion
 
 namespace BuyApartments
 {
@@ -36,10 +36,10 @@ namespace BuyApartments
 
             this.Interval = 1;
             this.Tick += this.BuyApartments_Tick;
-            this.KeyDown += BuyApartments_KeyDown;
+            this.KeyDown += this.BuyApartments_KeyDown;
         }
 
-        private void BuyApartments_KeyDown( object sender, System.Windows.Forms.KeyEventArgs e )
+        private void BuyApartments_KeyDown( object sender, KeyEventArgs e )
         {
             if ( e.KeyCode == Keys.I )
             {

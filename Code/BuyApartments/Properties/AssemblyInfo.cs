@@ -1,26 +1,32 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿#region Using
+
+using System.Reflection;
 using System.Runtime.InteropServices;
+
+#endregion
 
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("BuyApartments")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
+
+[assembly: AssemblyTitle( "BuyApartments" )]
+[assembly: AssemblyDescription( "" )]
+[assembly: AssemblyConfiguration( "" )]
 [assembly: AssemblyCompany( "" )]
-[assembly: AssemblyProduct("BuyApartments")]
+[assembly: AssemblyProduct( "BuyApartments" )]
 [assembly: AssemblyCopyright( "Copyright © IncoCode, 2015" )]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+[assembly: AssemblyTrademark( "" )]
+[assembly: AssemblyCulture( "" )]
 
 // Параметр ComVisible со значением FALSE делает типы в сборке невидимыми 
 // для COM-компонентов.  Если требуется обратиться к типу в этой сборке через 
 // COM, задайте атрибуту ComVisible значение TRUE для этого типа.
-[assembly: ComVisible(false)]
+
+[assembly: ComVisible( false )]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("e2beed80-68ea-4f70-ad36-28f176959c2a")]
+
+[assembly: Guid( "e2beed80-68ea-4f70-ad36-28f176959c2a" )]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
@@ -32,5 +38,6 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номера сборки и редакции по умолчанию 
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+
+[assembly: AssemblyVersion( "1.0.0.0" )]
+[assembly: AssemblyFileVersion( "1.0.0.0" )]
