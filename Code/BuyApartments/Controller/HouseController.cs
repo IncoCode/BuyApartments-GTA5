@@ -46,6 +46,10 @@ namespace BuyApartments.Controller
                 {
                     return;
                 }
+                if ( houseJSON.SavePoint == null )
+                {
+                    houseJSON.SavePoint = new CoordinatesJSON( 0, 0, 0 );
+                }
                 var house = new House( houseJSON.Name, interior, houseJSON.Price, houseJSON.Location,
                     houseJSON.DailyRent, houseJSON.SavePoint );
                 if ( this._houses.Contains( house ) )
