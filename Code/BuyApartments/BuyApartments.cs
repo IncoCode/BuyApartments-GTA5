@@ -107,7 +107,10 @@ namespace BuyApartments
             foreach ( House freeHouse in freeHouses )
             {
                 var bButton = new UIMenuItem( "Buy " + freeHouse.Name );
-                bButton.Activated += ( sender, item ) => { };
+                bButton.Activated += ( sender, item ) =>
+                {
+                    
+                };
                 menu.AddItem( bButton );
             }
             menu.OnMenuClose += sender =>

@@ -47,7 +47,7 @@ namespace BuyApartments.Controller
                     return;
                 }
                 var house = new House( houseJSON.Name, interior, houseJSON.Price, houseJSON.Location,
-                    houseJSON.DailyRent );
+                    houseJSON.DailyRent, houseJSON.SavePoint );
                 if ( this._houses.Contains( house ) )
                 {
                     this._houses.Remove( house );
