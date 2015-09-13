@@ -41,7 +41,7 @@ namespace BuyApartments.Controller
             }
             foreach ( HouseJSON houseJSON in parsedInteriors.Houses )
             {
-                Interior interior = this._interiorController.Interiors.FirstOrDefault( i => i.Name == houseJSON.Name );
+                Interior interior = this._interiorController.Interiors.FirstOrDefault( i => i.Name == houseJSON.Interior );
                 if ( interior == null )
                 {
                     return;

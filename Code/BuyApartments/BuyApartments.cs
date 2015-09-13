@@ -56,8 +56,6 @@ namespace BuyApartments
         private void CreateApartmentsMenu()
         {
             var menu = new UIMenu( "Buy Apartments", "" );
-            var buttons = new List<UIMenuItem>();
-            UI.ShowSubtitle( this._purchasedHousesController.FreeHouses.Length.ToString() );
             foreach ( House house in this._purchasedHousesController.FreeHouses )
             {
                 var button = new UIMenuItem( house.Name );
@@ -67,10 +65,10 @@ namespace BuyApartments
                     this._blip.ShowRoute = true;
                     this._menuPool.CloseAllMenus();
                 };
-                buttons.Add( button );
+                menu.AddItem( button );
             }
-            menu.MenuItems.AddRange( buttons );
             menu.Visible = true;
+            menu.RefreshIndex();
             this._menuPool.Add( menu );
         }
 
